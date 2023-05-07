@@ -89,7 +89,7 @@ export const SmartAccountProvider = ({ children }: any) => {
         networkConfig: [
           {
             chainId: ChainId.POLYGON_MUMBAI,
-            dappAPIKey: "59fRCMXvk.8a1652f0-b522-4ea7-b296-98628499aee3",
+            dappAPIKey: "SHWXl5whC.a7efae22-1b3d-40fc-bc1f-d734aaa2b3bc",
           },
           {
             chainId: ChainId.POLYGON_MAINNET,
@@ -101,7 +101,7 @@ export const SmartAccountProvider = ({ children }: any) => {
 
       // Wallet initialization to fetch wallet info
       const smartAccount = await wallet.init();
-      setWallet(wallet);
+      setWallet(smartAccount);
       console.info("smartAccount", smartAccount);
 
       smartAccount.on("txHashGenerated", (response: any) => {

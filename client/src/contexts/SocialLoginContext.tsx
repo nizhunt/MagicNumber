@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import SocialLogin from "@biconomy/web3-auth";
-import { activeChainId } from "../utils/chainConfig";
+import { activeChainId, ChainId } from "../utils/chainConfig";
 
 interface web3AuthContextType {
   connect: () => Promise<SocialLogin | null | undefined>;
@@ -94,7 +94,9 @@ export const Web3AuthProvider = ({ children }: any) => {
     }
     setLoading(true);
     const sdk = new SocialLogin();
-    await sdk.init();
+    await sdk.init({
+      chainId: ethers.utils.hexValue(ChainId.POLYGON_MUMBAI),
+    });
     sdk.showWallet();
     setSocialLoginSDK(sdk);
     setLoading(false);
